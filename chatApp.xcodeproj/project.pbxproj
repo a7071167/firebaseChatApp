@@ -10,6 +10,7 @@
 		54145ED8C80E63330951213D /* Pods_chatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FE72020D261268D0266F03 /* Pods_chatApp.framework */; };
 		CE6AAA74213AD42A000FDEEF /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AAA73213AD42A000FDEEF /* NewMessageController.swift */; };
 		CE6AAA77213ADD43000FDEEF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AAA76213ADD43000FDEEF /* User.swift */; };
+		CE880EE8213FA4A70006BB1D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880EE7213FA4A70006BB1D /* Extensions.swift */; };
 		CE9D753F213CFEEA00A40913 /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D753E213CFEEA00A40913 /* LoginController+handlers.swift */; };
 		CEA3BF422139061D00604FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3BF412139061D00604FE1 /* AppDelegate.swift */; };
 		CEA3BF442139061D00604FE1 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3BF432139061D00604FE1 /* MessagesController.swift */; };
@@ -25,6 +26,7 @@
 		345434E9C91C9052F3511C84 /* Pods-chatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-chatApp/Pods-chatApp.release.xcconfig"; sourceTree = "<group>"; };
 		CE6AAA73213AD42A000FDEEF /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		CE6AAA76213ADD43000FDEEF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE880EE7213FA4A70006BB1D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE9D753E213CFEEA00A40913 /* LoginController+handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+handlers.swift"; sourceTree = "<group>"; };
 		CEA3BF3E2139061D00604FE1 /* chatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA3BF412139061D00604FE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CE880EE6213FA48E0006BB1D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE880EE7213FA4A70006BB1D /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CEA3BF352139061D00604FE1 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 		CEA3BF402139061D00604FE1 /* chatApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE880EE6213FA48E0006BB1D /* Helpers */,
 				CE6AAA75213ADD29000FDEEF /* Model */,
 				CEA3BF53213907CD00604FE1 /* Controller */,
 				CEA3BF412139061D00604FE1 /* AppDelegate.swift */,
@@ -250,6 +261,7 @@
 				CEA3BF55213907E700604FE1 /* LoginController.swift in Sources */,
 				CE6AAA77213ADD43000FDEEF /* User.swift in Sources */,
 				CEA3BF422139061D00604FE1 /* AppDelegate.swift in Sources */,
+				CE880EE8213FA4A70006BB1D /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
