@@ -33,64 +33,7 @@ class LoginController: UIViewController {
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
-    
-    
-    @objc func handleLoginRegister() {
-        if loginRegisterSegmentControl.selectedSegmentIndex == 0 {
-            handleLogin()
-        } else {
-            handleRegister()
-        }
-    }
-    
-    func handleLogin() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            print("Form is not valid")
-            return
-        }
         
-        Auth.auth().signIn(withEmail: email, password: password) { (data, error) in
-            if error != nil {
-                print(error as Any)
-                return
-            }
-            // successfully logged in our user
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func handleRegister() {
-        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
-            print("Form is not valid")
-            return
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (data, error) in
-            
-            if error != nil {
-                print(error as Any)
-                return
-            }
-            
-            guard let uid = data?.user.uid else { return }
-            
-            let ref = Database.database().reference(fromURL: "https://chatapp-47.firebaseio.com/")
-            let userReference = ref.child("users").child(uid)
-            let values = ["name": name, "email": email]
-            userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                if err != nil {
-                    print(err as Any)
-                    return
-                }
-                
-                self.dismiss(animated: true, completion: nil)
-                print("Saved user succeffully in firebase DB")
-            })
-            
-            
-        }
-    }
-    
     let nameTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Name"
@@ -127,13 +70,20 @@ class LoginController: UIViewController {
         return tf
     }()
     
-    let profileImageView: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "pint400")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         imageView.layer.cornerRadius = 75
+        imageView.layer.shadowColor = UIColor.gray.cgColor
+        
         imageView.layer.masksToBounds = true
+        
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView(_:))))
+        
         return imageView
     }()
     
@@ -179,8 +129,9 @@ class LoginController: UIViewController {
         
         setupInputsContainerView()
         setupLoginRegisterButton()
-        setupProfileImageView()
+        
         setupLoginRegisterSegmentControl()
+        setupProfileImageView()
     }
     
     func setupLoginRegisterSegmentControl() {
@@ -195,6 +146,8 @@ class LoginController: UIViewController {
         profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentControl.topAnchor, constant: -12).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        
     }
     
     var inputContainerViewHeightAnchor: NSLayoutConstraint?
